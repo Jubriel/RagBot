@@ -50,7 +50,7 @@ def moto(query:str):
     conversations.append({'role': 'user', 'content': query})
 
     response = openai.ChatCompletion.create(
-        model='gpt-3.5-turbo',# gpt-4',
+        model= 'gpt-3.5-turbo',#'gpt-4',#
         messages=conversations,
         max_tokens = 200,
 
