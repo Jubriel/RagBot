@@ -1,4 +1,4 @@
 .env
 *.ipynb
 __pycache__
-/.streamlit/secret.toml
+/.streamlit/secrets.toml

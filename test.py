@@ -17,7 +17,7 @@ with open('FAQ.txt', 'r') as file:
 system_instruction = f'''You are a friendly assistant.Your role is to provide valuable information about Motopay. 
                             Prioritize this {contents}. 
                             Refrain from answering questions not related to this focus. 
-                            Structure the response to stop at the last puntuation before the max_tokens.'''
+                            Structure the response to stop at the last major puntuation before the max_tokens.'''
 
 conversations = [
     {'role': 'system', 'content': system_instruction}
@@ -50,7 +50,7 @@ def moto(query:str):
     conversations.append({'role': 'user', 'content': query})
 
     response = openai.ChatCompletion.create(
-        model='gpt-4',#'gpt-3.5-turbo',
+        model='gpt-3.5-turbo',# gpt-4',
         messages=conversations,
         max_tokens = 200,
 
