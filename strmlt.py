@@ -34,10 +34,6 @@
 # if user_input:
 #     output = moto(user_input)
 
-# 	# with st.form(key = 'my_form', clear_on_submit = True):			
-# 	# 	st.write('Something is made here')					
-# 	# 	submit_button = st.form_submit_button(label = 'Submit', on_click = moto(user_input))	
-
 #     st.session_state.past.append(user_input)
 #     st.session_state.generated.append(output)
 
@@ -63,6 +59,7 @@ def display_chat_history():
             message(user_msg, is_user=True, key=f"{i}_user")
     chat_container.markdown("")
 
+
 st.set_page_config(
     page_title="Ask-Moto | Friendly Assistant",
     page_icon="✅",
@@ -70,6 +67,7 @@ st.set_page_config(
 )
 st.title("Ask-Moto")
 initialize_chat_history()
+
 
 with st.form(key='my_form', clear_on_submit=True):
     user_input = st.text_input("You: ", key="input")
@@ -82,6 +80,3 @@ with st.form(key='my_form', clear_on_submit=True):
             display_chat_history()
         except Exception as e:
             st.error(f"An error occurred: {e}")
-
-# if __name__ == '__main__':
-#     main()
