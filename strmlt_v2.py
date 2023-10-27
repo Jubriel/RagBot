@@ -1,29 +1,34 @@
 import streamlit as st
+from streamlit_chat import *
 from llama_index import VectorStoreIndex, ServiceContext, Document
 from llama_index.llms import OpenAI
 import openai
 from llama_index import SimpleDirectoryReader
 
-openai.api_key = st.secrets.openai_key
-st.header("Chat with the Streamlit docs 💬 📚")
+openai.api_key = st.secrets.OPENAI_API_KEY
+st.header("Chat with AskMoto 💬")
 
 if "messages" not in st.session_state.keys(): # Initialize the chat message history
     st.session_state.messages = [
-        {"role": "assistant", "content": "Ask me a question about Streamlit's open-source Python library!"}
+        {"role": "assistant", "content": "Ask me a question about Motopay!"}
     ]
 
 @st.cache_resource(show_spinner=False)
 def load_data():
     with st.spinner(text="Loading and indexing the Streamlit docs – hang tight! This should take 1-2 minutes."):
-        reader = SimpleDirectoryReader(input_dir="./data", recursive=True)
+        reader = SimpleDirectoryReader(input_files=["FAQ.txt"], recursive=True)
         docs = reader.load_data()
-        service_context = ServiceContext.from_defaults(llm=OpenAI(model="gpt-3.5-turbo", temperature=0.5, system_prompt="You are an expert on the Streamlit Python library and your job is to answer technical questions. Assume that all questions are related to the Streamlit Python library. Keep your answers technical and based on facts – do not hallucinate features."))
+        service_context = ServiceContext.from_defaults(llm=OpenAI(model="gpt-3.5-turbo", temperature=0.5, 
+                        system_prompt=f"""You are a friendly assistant.Your role is to provide valuable information about Motopay. 
+                                            Refrain from answering questions not related to this focus. 
+                                            Stop response at last '.'""")
+                        )
         index = VectorStoreIndex.from_documents(docs, service_context=service_context)
         return index
 
 index = load_data()
 
-chat_engine = index.as_chat_engine(chat_mode="condense_question", verbose=True)
+chat_engine = index.as_chat_engine(chat_mode="openai", verbose=True)
 
 if prompt := st.chat_input("Your question"): # Prompt for user input and save to chat history
     st.session_state.messages.append({"role": "user", "content": prompt})

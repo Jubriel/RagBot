@@ -50,6 +50,11 @@ def moto(query:str):
     
     conversations.append({'role': 'user', 'content': query})
 
+    # Limit the conversations list to a maximum of 5 entries
+    if len(conversations) > 5:
+        # Remove the oldest conversations, but keep the system instruction at the beginning
+        conversations.pop(1)
+
     response = openai.ChatCompletion.create(
         model= 'gpt-3.5-turbo',#'gpt-4',#
         messages=conversations,
