@@ -14,11 +14,11 @@ with open('FAQ.txt', 'r') as file:
 
 
 # Simplified system instruction for clarity and relevance
-system_instruction = f'''You are a friendly assistant.Your role is to provide valuable information about Motopay. 
-                        "ONLY ANSWER QUESTION RELATED TO THE FOCUS, REFRAIN FROM UNRELATED QUESTIONS." 
-                        Respond with maximum of 40 words.
-                        "DO NOT answer any question or conversation not related to CONTEXT".
-                        Prioritize this ``{contents}.`` '''
+system_instruction = f'''You are an assistant. Provide ONLY short and valuable information about Motopay within 40 words. 
+                            REFRAIN from answering questions not related to this FOCUS,
+                            Prioritize ``{contents}``.
+                            STRICTLY answer ONLY questions related to the specified FOCUS.
+                            Any deviation will not be tolerated.'''
 
 conversations = [
     {'role': 'system', 'content': system_instruction}
@@ -57,7 +57,7 @@ def moto(query:str):
         conversations.pop(1)
 
     response = openai.ChatCompletion.create(
-        model= 'gpt-4',#,'gpt-3.5-turbo-instruct'
+        model= 'gpt-4',#,'gpt-3.5-turbo'
         messages=conversations,
         max_tokens = 200,
 
@@ -66,3 +66,43 @@ def moto(query:str):
     conversations.append({'role': 'assistant', 'name': 'AskMoto', 'content': response})
     
     return response
+
+
+
+
+# model_engine = "text-davinci-003"
+# chatbot_prompt = f"""
+# You are an assistant. Provide ONLY short and valuable information about Motopay within 40 words. 
+#                             REFRAIN from answering questions not related to this FOCUS,
+#                             Prioritize ``{contents}``. 
+#                             if question is not related to `contents` return "Not Related",
+#                             STRICTLY answer ONLY questions related to the specified FOCUS.
+#                             Any deviation will not be tolerated.'''
+
+
+# <conversation_history>
+# User: <user input>
+# Hannah:"""
+
+# conversation_history = []
+# def get_response(conversation_history, user_input):
+#     prompt = chatbot_prompt.replace(
+#         "<conversation history>", "".join(conversation_history)).replace("<user input>", user_input)
+
+#     # Get the response from GPT-3
+#     response = openai.Completion.create(
+#         engine=model_engine, prompt=prompt, max_tokens=2048, n=2, stop=None, temperature=0.5)
+
+#     # Extract the response from the response object
+#     response_text = response["choices"][0]["text"]
+
+#     chatbot_response = response_text.strip()
+
+#     return chatbot_response
+
+
+# def main(user_input):
+#     chatbot_response = get_response(conversation_history, user_input)
+#     conversation_history.append(f"User: {user_input}\nHannah: {chatbot_response}\n")
+#     print(len(conversation_history))
+#     return f"Hannah: {chatbot_response}"

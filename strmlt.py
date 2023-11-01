@@ -5,6 +5,7 @@ from streamlit_chat import *
 # from llama_index import SimpleDirectoryReader
 import openai
 from test import moto
+import time
 
 openai.api_key = st.secrets.OPENAI_API_KEY
 st.header("Chat with AskMoto 💬")
@@ -44,7 +45,12 @@ for message in st.session_state.messages: # Display the prior chat messages
 if st.session_state.messages[-1]["role"] != "assistant":
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
+            t1 = time.time()
             response = moto(prompt)
+            t2 = time.time()
+            dur = t2 - t1
+            msg = f'Response time: {round(dur, 2)} secs' if dur < 60 else f'Response time: {round(dur/60, 2)} mins'
             st.write(response)
+            st.success(msg)
             message = {"role": "assistant", "content": response}
             st.session_state.messages.append(message) # Add response to message history
