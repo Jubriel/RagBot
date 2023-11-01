@@ -59,6 +59,7 @@ def moto(query:str):
     response = openai.ChatCompletion.create(
         model= 'gpt-4',#,'gpt-3.5-turbo'
         messages=conversations,
+        temperature = 0.5,
         max_tokens = 200,
 
         )['choices'][0]['message']['content']
