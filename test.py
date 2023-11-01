@@ -15,9 +15,10 @@ with open('FAQ.txt', 'r') as file:
 
 # Simplified system instruction for clarity and relevance
 system_instruction = f'''You are a friendly assistant.Your role is to provide valuable information about Motopay. 
-                            Prioritize this {contents}. 
-                            Refrain from answering questions not related to this focus. 
-                            Stop response at last '.' '''
+                        "ONLY ANSWER QUESTION RELATED TO THE FOCUS, REFRAIN FROM UNRELATED QUESTIONS." 
+                        Respond with maximum of 40 words.
+                        "DO NOT answer any question or conversation not related to CONTEXT".
+                        Prioritize this ``{contents}.`` '''
 
 conversations = [
     {'role': 'system', 'content': system_instruction}
@@ -32,7 +33,7 @@ conversations = [
 #         messages=conversations,
 #         max_tokens = 200,
 #         stream = True,
-#         )
+#         )3E
 #     # ['choices'][0]['message']['content']
 
 #     for event in response: 
@@ -50,13 +51,13 @@ def moto(query:str):
     
     conversations.append({'role': 'user', 'content': query})
 
-    # Limit the conversations list to a maximum of 5 entries
-    if len(conversations) > 5:
+    # Limit the conversations list to a maximum of 7 entries
+    if len(conversations) > 7:
         # Remove the oldest conversations, but keep the system instruction at the beginning
         conversations.pop(1)
 
     response = openai.ChatCompletion.create(
-        model= 'gpt-3.5-turbo',#'gpt-4',#
+        model= 'gpt-4',#,'gpt-3.5-turbo-instruct'
         messages=conversations,
         max_tokens = 200,
 

@@ -16,14 +16,14 @@ if "messages" not in st.session_state.keys(): # Initialize the chat message hist
 @st.cache_resource(show_spinner=False)
 def load_data():
     with st.spinner(text="Loading and indexing the Streamlit docs – hang tight! This should take 1-2 minutes."):
-        reader = SimpleDirectoryReader(input_files=["FAQ.txt"], recursive=True)
-        docs = reader.load_data()
-        service_context = ServiceContext.from_defaults(llm=OpenAI(model="gpt-3.5-turbo", temperature=0.5, 
-                        system_prompt=f"""You are a friendly assistant.Your role is to provide valuable information about Motopay. 
+        service_context = ServiceContext.from_defaults(llm=OpenAI(model="gpt-4", temperature=0.5, 
+                        system_prompt=f"""You are a friendly assistant.Your role is to provide valuable information about Motopay.
+                                            Respond with maximum of 40 words. 
                                             Refrain from answering questions not related to this focus. 
-                                            Stop response at last '.'""")
+                                            """)
                         )
-        index = VectorStoreIndex.from_documents(docs, service_context=service_context)
+        reader = SimpleDirectoryReader(input_files=["FAQ.txt"], recursive=True)
+        index = VectorStoreIndex.from_documents(reader.load_data(), service_context=service_context)
         return index
 
 index = load_data()
