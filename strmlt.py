@@ -4,7 +4,9 @@ from streamlit_chat import *
 # from llama_index.llms import OpenAI
 # from llama_index import SimpleDirectoryReader
 import openai
-from test import moto
+# from test import moto
+from test_2 import moto
+
 import time
 
 openai.api_key = st.secrets.OPENAI_API_KEY
