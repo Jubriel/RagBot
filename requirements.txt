@@ -6,3 +6,4 @@ pydantic==1.10.7
 python-dotenv==1.0.0
 streamlit==1.24.0
 streamlit-chat==0.1.1
+uvicorn==0.22.0
