@@ -1,12 +1,14 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Body
 from pydantic import BaseModel
 import uvicorn
-from test import moto
+from test_2 import moto
 
 class Query(BaseModel):
     query: str
 
-app = FastAPI()
+app = FastAPI(title= "Ask-Moto Chatbot API",
+    description= "Motopay assistant",
+    version= "0.1.0",)
 
 @app.get("/")
 def read_root():
@@ -19,18 +21,18 @@ def read_root():
     return {"Hello": "Welcome to the Ask-Moto API!"}
 
 @app.post("/chatbot/")
-def ask_moto(query:str):
+def ask_moto(Query = Body(...)):
     """
     Chat with the Ask-Moto chatbot.
 
     Args:
-        query_data (Query): The input query and chat logs.
+        Query (str): The input query.
 
     Returns:
-        dict: The response from the chatbot.
+       str: The response from the chatbot.
     """
     try:
-        response = moto(query)
+        response = moto(Query)
         return response
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

@@ -32,7 +32,7 @@ No request parameters are required.
 
 ---
 
-### 2. Chat with Ask-Moto (Standard)
+### 2. Chat with Ask-Moto
 
 - **URL:** `/chatbot/`
 - **Method:** POST
@@ -40,9 +40,8 @@ No request parameters are required.
 
 #### Request
 
-- **Body:**
+- **Query:**
   - `query` (string, required): The user's input query.
-  - `chat_logs` (list, optional): List of previous chat logs (default is an empty list).
 
 #### Response
 
@@ -51,24 +50,6 @@ No request parameters are required.
 
 ---
 
-### 3. Chat with Ask-Moto (Streaming)
-
-- **URL:** `/chat_stream/`
-- **Method:** POST
-- **Description:** Use this endpoint to have a streaming conversation with the Ask-Moto chatbot. Messages will be streamed as they are generated.
-
-#### Request
-
-- **Body:**
-  - `query` (string, required): The user's input query.
-  - `chat_logs` (list, optional): List of previous chat logs (default is an empty list).
-
-#### Response
-
-- **Status Code:** 200 OK
-- **Response Body:** Messages will be streamed in real-time as they are generated.
-
----
 
 ## Usage Examples
 
@@ -81,38 +62,16 @@ POST /chatbot/
 Content-Type: application/json
 
 {
-  "query": "Tell me a joke."
+  "query": "what is motopay."
 }
 ```
 
 **Response:**
 
-```json
-{
-  "message": "Why don't scientists trust atoms? Because they make up everything!"
-}
 ```
+  "MotoPay is a digital bank providing scan-to-pay methods for bill payments, social connectivity, free calls and chats, online shopping, and access to a wide range of shops. It simplifies transactions for merchants and users through a personalized bank account and a QR code."
 
-### Example 2: Chat with Ask-Moto (Streaming)
-
-**Request:**
-
-```http
-POST /chat_stream/
-Content-Type: application/json
-
-{
-  "query": "What's the weather like today?"
-}
 ```
-
-**Response:**
-
-```text/event-stream
-data: "The weather is sunny with a high of 25°C."
-```
-
----
 
 ## Error Handling
 
