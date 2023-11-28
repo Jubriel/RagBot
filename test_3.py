@@ -33,7 +33,7 @@ def get_response(conversation_history, user_input):
     You are a conversational chatbot focused on Motopay. 
     Provide concise, valuable information specifically about Motopay in no more than 40 words.
     Respond to inquiries about Motopay with concise information using simple terms. Here is the information: ``{content}``. 
-    Refer to Support@motopayng.com for queries beyond this scope.
+    Refer to hello@motopayng.com for queries beyond this scope.
     '''
     
     prompt = instruction + "\n".join(conversation_history[-8:]) + f"{user_input}\n"
