@@ -2,7 +2,7 @@ import streamlit as st
 from streamlit_chat import *
 import openai
 # from test import moto
-from test_2 import moto
+from test_3 import moto
 
 import time
 
@@ -10,10 +10,6 @@ openai.api_key = st.secrets.OPENAI_API_KEY
 
 # Streamlit page configuration
 st.set_page_config(page_title="MotoPay Chatbot", layout="centered")
-
-# # Sidebar for language selection
-# language_options = ["English", "Pidgin"]
-# selected_language = st.sidebar.selectbox("Choose Language", language_options)
 
 # Main Chat Interface
 # st.title("MotoPay Chatbot")

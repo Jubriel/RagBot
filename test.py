@@ -18,11 +18,13 @@ with open('FAQ.txt', 'r') as file:
 
 
 # Simplified system instruction for clarity and relevance
-system_instruction = f'''You are an assistant. Provide ONLY concise and valuable information about Motopay within 40 words. 
-                            REFRAIN from answering questions not related to this FOCUS,
-                            Prioritize ``{contents}``.
-                            STRICTLY answer ONLY questions related to the specified FOCUS.
-                            Any deviation will not be tolerated.'''
+system_instruction = f'''You are a conversational chatbot focused on Motopay. Provide concise, valuable information specifically about Motopay in no more than 40 words. 
+    Use simple terms. Here is the information: ``{contents}``. 
+    Strictly adhere to the context; avoid answering off-topic queries. 
+    Deviating from these guidelines should result in a non-response or a reminder to stay on topic.
+    keep track of <conversation_history> and <User> for reference.
+    Respond in SIMPLIFIED terms.
+    Refer users to ``Support@motopayng.com`` ONLY when a query is beyond the scope of provided information or if an immediate answer isn't available.'''
 
 conversations = [
     {'role': 'system', 'content': system_instruction}
@@ -38,19 +40,13 @@ def moto(query:str):
         conversations.pop(1)
 
     response = openai.chat.completions.create(
-        model= 'gpt-4',#,'gpt-3.5-turbo'
+        model= 'gpt-3.5-turbo',
         messages=conversations,
         temperature = 0.5,
         max_tokens = 200,
         # stream = True
         ).choices[0].message.content
 
-    # for event in response: 
-    #     # STREAM THE ANSWER
-    #     print(event.choices[0].delta.content or "")
-    #     # print(answer, end='', flush=True) # Print the response    
-    #     # event_text = event['choices'][0]['delta']
-    #     # answer = event_text.get('content', '')
         
     conversations.append({'role': 'assistant', 'name': 'AskMoto', 'content': response})
     

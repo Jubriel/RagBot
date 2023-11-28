@@ -1,0 +1,620 @@
+﻿TECHNICAL PROCESS DOCUMENT - MOTOPAY
+
+
+This document contains steps users are expected to take to achieve specific actions on the Motopay mobile application and the SOP for escalating issues for resolution. 
+
+
+S/N
+	MODULES
+	ACTIONS 
+	STEPS
+	POSSIBLE FAIL CASES
+	DISPUTE RESOLUTION SOP
+	COMMENTS
+	1
+	Motopay
+	Account Registration 
+	Download the Motopay application from the authorised app store. (playstore and appstore)
+	1. Unable to sign up successfully 
+	Check that device is connected to the internet
+	Upon signing up, users automatically agree to Motopay’s T/C
+	Launch the application and click on "Sign Up" to create a new account.
+	Check that KYC information provided are accurate 
+	
+
+	Enter the required information, including mobile number, first & last names, gender, bvn (if applicable) and password
+	2. User didn’t get OTP
+	Check that phone number provided is accurate
+	
+
+	Verify your mobile number through a one-time password (OTP) sent to the registered number.
+	Check that device has internet connectivity 
+	
+
+	Upon successful registration, a confirmation message will be displayed, and the user can log in to their account.
+	Contact support for assistance 
+	
+
+	2
+	Account Setup
+	Log in to the Motopay application using your registered credentials.
+	3. User is unable to setup transaction pin 
+	Check that user old pin matches with the user’s previously used pin 
+	
+
+	Check that the new pin differs from previous pin 
+	Contact support for assistance 
+	To update personal information, go to the "Profile"
+	4. User is unable to view transaction history  
+	Check that device has internet connectivity 
+	
+
+	Change password, PIN, or security settings if required, ensuring strong and unique credentials.
+	5. Unable to update profile information
+	Check that device has internet connectivity 
+	
+
+	Ensure information provided tallies with KYC data
+	Contact support for assistance
+	Regularly review account statements and transaction history for any discrepancies or unauthorised activities.
+	6. User didn’t get OTP
+	Check that phone number provided is accurate
+	
+
+	Check that device has internet connectivity 
+	Contact support for assistance 
+	 Enable two-factor authentication (2FA) for enhanced security (if/where applicable)
+	7. User is unable to load screen
+	Check that device has internet connectivity
+	
+
+	
+
+	
+
+	View dashboard
+	Log in to your Motopay profile or click on the “M” icon on the bottom navigation bar
+	
+
+	
+
+	
+
+	3
+	Payment
+	Send Money
+	Select the "Send Money" option from the dashboard.
+	8. System is unable to generate receipt
+	Check that device has internet connectivity
+	
+
+	Select preferred payment destination (motopay user or bank)
+	9. Transaction failed
+	Contact support for assistance
+	
+
+	Check to see if user has sufficient balance 
+	Check that device has internet connectivity
+	Enter the payment's details, including the amount and description
+	10. User’s wallet is debited and recipient is not credited 
+	Contact support for assistance
+	
+
+	Verify the transaction details and authorise the payment using the designated security feature (PIN)
+	11. Payment status is successful but money is reversed to sender
+	Contact support for assistance
+	
+
+	Once the payment is successful, a confirmation message will be displayed, and an electronic receipt will be sent to both parties.
+	
+
+	
+
+	
+
+	Once the payment is successful, a confirmation message will be displayed, and an electronic receipt will be sent to both parties.
+	
+
+	
+
+	
+
+	4
+	Fund Wallet 
+	Notify the sender of your Motopay registered mobile number, mototag, or QR code for receiving payments.
+	12. System is unable to generate receipt
+	Check that device has internet connectivity
+	
+
+	Ensure that your Motopay application is active to receive payment notifications.
+	13. Transaction failed
+
+
+	Contact support for assistance
+	
+
+	Check to see if user has sufficient balance 
+	The received amount will be reflected in your Motopay account balance.
+	Check that device has internet connectivity
+	
+
+	Check to see that wallet information is accurate 
+	5
+	Pay Bills
+	Select the "Pay bills" option from the dashboard.
+	14. Payment is successful  but user did not receive token
+	Contact support for assistance
+	The information required per bill includes but is not limited to: 
+
+
+* Airtime - Network provider, mobile number (if applicable), amount.
+* Data - Network provider, product/package, mobile number, amount. 
+* Cable TV - Decoder number,bill plan, amount.
+* Electricity - Meter number, bill plan, amount.
+* Betting - User ID, bill plan, amount. 
+	Select preferred bills to settle (airtime, data, cable, electricity, betting, water)
+	15. User is unable to complete transaction 
+	Check to see that users device has internet connectivity
+	Check to see that user is inputting correct credentials 
+	Check to see that user has sufficient balance 
+	Enter all relevant information required per bill selected e.g, metre number, amount, service provider, biller, smartcard number, etc)
+	
+
+	
+
+	Verify the transaction details and authorise the payment using the designated security feature (PIN)
+	
+
+	
+
+	Once the payment is successful, a confirmation message will be displayed, and an electronic receipt will be sent to both parties.
+	
+
+	
+
+	6
+	Request Money
+	Click the "Request Money" option from the dashboard.
+	
+
+	
+
+	
+
+	Select the “user” to request from
+	
+
+	
+
+	
+
+	Enter the request details, including the amount, description and proceed to request
+	
+
+	
+
+	
+
+	7
+	Scan to pay
+	Click the "Scan to Pay" option from the dashboard.
+	16. User is unable to scan provided QR code 
+
+
+	Check to see that user’s device has internet connectivity
+	
+
+	Scan the QR code provided using the scanner displayed
+	17. User is unable to complete transaction 
+
+
+	Check to see if user is inputting right authorization pin 
+	
+
+	Verify the transaction details and authorise the payment using the designated security feature (PIN)
+	
+
+	
+
+	
+
+	8
+	Loan 
+	Apply for loan 
+	Click the "Loan" option from the dashboard.
+	
+
+	
+
+	Loan applications take between 5 mins to 24 hours to process and can either be approved or declined. 
+
+
+In a case where an application is declined, users will be notified and the reason for the decline properly communicated. 
+
+
+In a case where an application is approved, the approved amount is automatically remitted into said user’s primary motopay wallet.
+	Grant relevant pngme access including - sms, location, contact, etc and proceed to apply 
+	
+
+	
+
+	Provide relevant and preferred loan information including - amount, duration, category, etc
+	
+
+	
+
+	Provide personal information for verification purpose including - address, employment status, company name (if applicable), next of kin, next of kin phone number, guarantor, guarantor phone number, etc. and proceed to apply
+	
+
+	
+
+	9
+	Budget
+	Set Spend Limit
+	Navigate to the budget module and click on “set spend limit”
+	
+
+	
+
+	Spend limit is applicable to the users primary account 
+	Set preferred limit and duration then save
+	
+
+	
+
+	10
+	Lockfunds
+	Navigate to the budget module and click on “lockfunds”
+	
+
+	
+
+	
+
+	Provide relevant data to allow successful completion of said action including but not limited to - title, amount, frequency, payment method, payment category, start & end date, etc 
+	
+
+	
+
+	
+
+	Verify the provided details and authorise the payment using the designated security feature (PIN)
+	
+
+	
+
+	
+
+	11
+	Set Savings Target
+	Navigate to the budget module and click on “savings target”
+	
+
+	
+
+	
+
+	Provide relevant data to allow successful completion of said action including but not limited to - title, amount, frequency, payment method, payment category, start & end date, etc 
+	
+
+	
+
+	
+
+	Verify the provided details and authorise the payment using the designated security feature (PIN)
+	
+
+	
+
+	
+
+	12
+	Motopay
+	View Credit Rating 
+	Click on the (star) icon displayed on the profile to navigate to the credit rating screen 
+	
+
+	
+
+	
+
+	View information provided with regards to current credit rate and requirements for other ratings provided
+	
+
+	
+
+	
+
+	13
+	Profile 
+	Navigate to the “profile” module on the dashboard 
+	18. Unable to update profile information
+	Check that device has internet connectivity 
+	
+
+	Utilise provided actions to set up, edit or refine profile data. 
+
+
+Actions provided include - profile settings, logout, account summary, setup store, invite friends, support, security, personal information, notification, kyc verification, etc. 
+	Ensure information provided tallies with KYC data
+	
+
+	
+
+	Follow the steps provided to achieve desired goal e.g edit, delete, add, etc
+	Contact support for assistance
+	
+
+	14
+	Shop
+	Receive Orders
+	Review order information as provided by buyer
+	19. User is unable to accept or decline order
+	Try rebooting user’s device
+	Pickup can only be scheduled for accepted orders 
+	Accept or decline order based on availability 
+	
+
+	Check that user’s device has internet connectivity 
+	Schedule pickup for accepted orders 
+	20. User is unable to schedule pickup
+	Try rebooting user’s device
+	Contact support for assistance 
+	16
+	List Products
+	Click the “Add” button located on the shop homepage
+	21. User is unable to list a product successfully
+	Check that user has filled all compulsory fields 
+	Published products are approved by admin before reflecting on the shop feed. 
+	Provide information relevant to said product including - product category, amount, quantity in stock, description, variations (if/as applicable), delivery type (state/nationwide) etc
+	Check that user’s device has internet connectivity
+	Upload product images (min 3 and max 10)
+	
+
+	
+
+	Publish said product to shop feed 
+	
+
+	
+
+	17
+	Edit Products
+	Click on selected product
+	
+
+	
+
+	Not all product details are editable. Details such as category, name, are static while details such as amount, quantity, description, delivery type, etc are editable. 
+	Edit provided data 
+	
+
+	
+
+	Publish updated copy of said product 
+	
+
+	
+
+	18
+	View Inventory
+	Click on the “inventory” feature on the shop homepage 
+	
+
+	
+
+	Inventory data can only be changed when a product’s quantity or price is edited from “edit product” point 
+	View provided stock data inclusive of stock performance, total stock quantity, etc.
+	
+
+	
+
+	19
+	Accept Dispute
+	View a filed dispute
+	22. Dispute’s status remains the same after accepting 
+	Contact support for assistance 
+	
+
+	Accept said dispute
+	
+
+	
+
+	
+
+	Proceed to resolve dispute 
+	
+
+	
+
+	
+
+	20
+	Reject Dispute 
+	View a filed dispute 
+	
+
+	
+
+	If a dispute is rejected, the user who filed said dispute is notified and prompted to either file a complaint or cancel. 
+
+
+If a complaint is filed, the dispute is escalated to Motopay admin to be resolved
+	Click on “reject” dispute 
+	
+
+	
+
+	State reason for rejection 
+	
+
+	
+
+	Provide supporting documents (if any)
+	
+
+	
+
+	Submit reason with documents provided 
+	
+
+	
+
+	21
+	Motopay
+	File Dispute 
+	Navigate to “dispute” on the motopay app 
+	23. User is unable to file a dispute 
+	Check to see that user’s device has internet connectivity 
+	Disputes filed from the point of product purchase is resolved on the shop module and involves both buyer and seller while, disputes filed from other points on the platform such as payment or support are resolved by the Motopay admin and only involves user concerned  
+	Select reason for dispute including - fraudulent, not received, others 
+	
+
+	
+
+	Add details of said claim 
+	
+
+	
+
+	Upload supporting documents (if any) 
+	
+
+	
+
+	Submit dispute 
+	
+
+	
+
+	22
+	Connect
+	Create Story
+	Navigate to the connect feed and click “Create story” 
+	24. User is unable to upload picture/video from their device
+	Check that user’s device has internet connectivity 
+	Images uploaded on connect must be max 5mb
+	Take a picture in real time or upload an image or video from gallery
+	Check that picture/video is the recommended size
+	View Story
+	Navigate to the connect feed and click on a user’s story
+	25. User is unable to view stories
+	Check that user’s device has internet connectivity
+	
+
+	View story and take decisive actions including - 
+	
+
+	
+
+	
+
+	Click on the “+” icon on the connect feed 
+	
+
+	
+
+	
+
+	Create Post
+	Add post in written format or upload an image/video as preferred
+	26. User is unable to create a post successfully 
+	Check to see that user’s device has internet connectivity
+	Images uploaded on connect must be max 5mb
+	Add tags or hashtags (if/as applicable) 
+	Check to see that user’s content is not in violation of set guidelines 
+	
+
+	Proceed to “create post”
+	Check to see that user’s post is not in infringement of a copyright 
+	
+
+	Highlight (post to feed)
+	At the point of payment successful, click on “post to feed” on provided receipt
+	
+
+	
+
+	
+
+	Preview post generated from said receipt 
+	
+
+	
+
+	
+
+	Proceed to post to feed
+	
+
+	
+
+	
+
+	Search
+	Click on the search bar provided 
+	
+
+	
+
+	
+
+	Type in search keywords or use auto generated keywords provided 
+	
+
+	
+
+	
+
+	View search result as preferred
+	
+
+	
+
+	
+
+	Edit bio
+	Click on the “edit” button provided on the connect bio 
+	27. User is unable to successfully update bio data
+	Check to see if user’s device has internet connectivity 
+	
+
+	Edit available information including - 
+	
+
+	
+
+	
+
+	Review and save updated information 
+	
+
+	
+
+	
+
+	Click the "QR code" provided on a user’s profile.
+	
+
+	
+
+	
+
+	Scan to follow
+	Scan the QR code provided using the scanner displayed
+	28. User is unable to scan provided QR code
+	Check to see if user’s device has internet connectivity
+	
+
+	Review the social data provided and take preferred decisive action including - Follow, message
+	
+
+	
+
+	
+
+	CONCLUSION 
+
+
+This document is for the support team (inclusive of the AI chatbot)  to understand users’ journeys across the entire Motopay ecosystem. Please note that it is dynamic and would continue to evolve as the product evolves.

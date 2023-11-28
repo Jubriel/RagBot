@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException, Body
 from pydantic import BaseModel
 import uvicorn
-from test_2 import moto
+from test_3 import moto
 
 class Query(BaseModel):
     query: str

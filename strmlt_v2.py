@@ -4,6 +4,7 @@ from llama_index import VectorStoreIndex, ServiceContext, Document
 from llama_index.llms import OpenAI
 import openai
 from llama_index import SimpleDirectoryReader
+import time
 
 openai.api_key = st.secrets.OPENAI_API_KEY
 st.header("Chat with AskMoto 💬")
@@ -20,9 +21,13 @@ def load_data():
                         system_prompt=f"""You are a friendly assistant.Your role is to provide valuable information about Motopay.
                                             Respond with maximum of 40 words. 
                                             Refrain from answering questions not related to this focus. 
-                                            """)
+                                            Strictly adhere to the context; avoid answering off-topic queries.
+                                            Keep track of conversation_history for reference.
+                                            Respond in SIMPLIFIED terms.
+                                            Refer users to ``Support@motopayng.com`` ONLY when a query is beyond the scope of provided information or 
+                                            if an immediate answer isn't available.""")
                         )
-        reader = SimpleDirectoryReader(input_files=["FAQ.txt"], recursive=True)
+        reader = SimpleDirectoryReader('./Data', recursive=False) #input_files=["FAQ data.txt", "TPD data.txt"] 
         index = VectorStoreIndex.from_documents(reader.load_data(), service_context=service_context)
         return index
 
@@ -38,11 +43,26 @@ for message in st.session_state.messages: # Display the prior chat messages
         st.write(message["content"])
 
 
+# # If last message is not from assistant, generate a new response
+# if st.session_state.messages[-1]["role"] != "assistant":
+#     with st.chat_message("assistant"):
+#         with st.spinner("Thinking..."):
+#             response = chat_engine.chat(prompt)
+#             st.write(response.response)
+#             message = {"role": "assistant", "content": response.response}
+#             st.session_state.messages.append(message) # Add response to message history
+
+
 # If last message is not from assistant, generate a new response
 if st.session_state.messages[-1]["role"] != "assistant":
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
-            response = chat_engine.chat(prompt)
-            st.write(response.response)
-            message = {"role": "assistant", "content": response.response}
+            t1 = time.time()
+            response = chat_engine.chat(prompt) #, selected_language
+            t2 = time.time()
+            dur = t2 - t1
+            msg = f'Response time: {round(dur, 2)} secs' if dur < 60 else f'Response time: {round(dur/60, 2)} mins'
+            st.write(response)
+            st.success(msg)
+            message = {"role": "assistant", "content": response}
             st.session_state.messages.append(message) # Add response to message history
