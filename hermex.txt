@@ -1,0 +1,46 @@
+Welcome to Hermex!
+Welcome to the team! We’re thrilled to have you with us as we work together to revolutionize travel with advanced AI, AR, and cryptocurrency. This onboarding channel will help you get familiar with Hermex’s mission, values, tools, and how you can start making an impact. Let’s get started!
+
+ About Hermex
+
+Hermex is an innovative travel platform dedicated to making journeys smarter, easier, and more rewarding. We leverage cutting-edge technology to provide:
+    •    Personalized AI Recommendations for a custom travel experience.
+    •    AR Navigation to guide travelers seamlessly.
+    •    Virtual Concierge Services for in-trip assistance.
+    •    Cryptocurrency Wallets and Hermex Token for secure, convenient payments and rewards.
+
+Our goal is to empower travelers worldwide by merging technology and travel into a seamless experience. Together, we’ll shape the future of travel! (edited)
+
+ Mission and Core Values
+
+At Hermex, we are guided by a commitment to innovation, customer-centricity, and global impact. Our mission is simple but ambitious: to enhance travel by combining AI and AR for a smarter, more accessible journey.
+
+Core Values:
+    •    Innovation: Always pushing boundaries in travel and technology.
+    •    Customer Experience: We prioritize making travel easy and enjoyable.
+    •    Global Reach: Hermex is built to serve travelers across the globe, with plans for expansion into markets that are enthusiastic about technology and cryptocurrency.
+
+ Current Projects and Goals
+
+Here’s what we’re working on right now:
+    •    AR Navigation Development: Building immersive navigation tools for travelers.
+    •    Hermex Token on Solana Blockchain: Launching our token to provide a unique rewards and payment experience.
+    •    Virtual Concierge: Developing a digital assistant for personalized travel assistance.
+    •    Global Expansion: Strategizing entry into key markets for travel and crypto.
+
+ Team Structure and Key Contacts
+
+Hermex is organized into several key teams to keep us aligned and productive:
+    •    Development: Working on the AI, AR, and cryptocurrency technology.
+    •    Marketing: Spreading the word about Hermex’s mission and offerings.
+    •    Operations: Managing day-to-day activities and ensuring smooth processes.
+
+If you’re ever unsure of whom to contact, feel free to reach out here on Discord—everyone is here to help!
+
+ Resources and Important Links
+
+    •    Hermex Whitepaper: https://docs.google.com/document/d/1FsAtL9AKZ1IElJft3khnHMd2OtOfq4WQtX82v09WRt4/edit
+    •    Hermex Token GitHub: Hermex Token GitHub : https://github.com/Hermex-Services/hermex-token-update
+    •    Terms and Conditions: https://docs.google.com/document/d/1-TP41VF3beWL67ZQCfRMYtFnx8rhon81Ql0IkWKwVaY/edit
+    •    Privacy Policy: https://docs.google.com/document/d/11-23hHsqSKPPZF1w3X3rpyeuN1GhOl1Yu1cCxwPH_0E/edit
+    •    Company Roadmap: https://docs.google.com/document/d/1RSL886Gdgtl80uZ5Bu6D5-lGxLIsxbhFMlB08n9ZSsc/edit
