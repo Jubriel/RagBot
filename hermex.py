@@ -9,15 +9,32 @@ from langchain_core.prompts import (ChatPromptTemplate, MessagesPlaceholder,
                                     HumanMessagePromptTemplate,
                                     SystemMessagePromptTemplate)
 from langchain.agents import tool, create_tool_calling_agent, AgentExecutor
-from langchain import hub
-from langchain.chains import RetrievalQA
+from langchain_azure_ai.chat_models import AzureAIChatCompletionsModel
+from langchain_azure_ai.embeddings import AzureAIEmbeddingsModel
 
 # Load environment variables
 load_dotenv()
 
-# Models
-llm = ChatOllama(model='qwen2:latest', temperature=0)
-embed = OllamaEmbeddings(model='mxbai-embed-large:latest')
+
+# from langchain
+import asyncio
+import nest_asyncio
+nest_asyncio.apply()
+
+load_dotenv()
+api_key = os.getenv("AZURE_OPENAI_API_KEY")
+endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
+# loading AI models
+
+llm = AzureAIChatCompletionsModel(
+    model_name="Llama-3.3-70B-Instruct",
+    endpoint=endpoint,
+    max_tokens=500,
+    # api_version="2024-05-01-preview",
+)
+embed = AzureAIEmbeddingsModel(
+    model_name="text-embedding-ada-002"
+    )
 
 # File path for persistent FAISS index
 FAISS_PATH = "hermex_faiss_index"
@@ -51,8 +68,7 @@ def setup_vectorstore():
         # Combine both document sets
         all_docs = web_docs + text_docs
         splitter = RecursiveCharacterTextSplitter(chunk_size=1000,
-                                                  chunk_overlap=200,
-                                                  multithreaded=True)
+                                                  chunk_overlap=200)
         chunks = splitter.split_documents(all_docs)
         vectorstore = FAISS.from_documents(chunks, embed)
         vectorstore.save_local(FAISS_PATH)
@@ -65,17 +81,40 @@ class HermexAssistant:
         self.embedding_model = embed
         self.streaming = streaming
         self.user_sessions: dict[str, ChatMessageHistory] = {}
-        self.vectorstore = setup_vectorstore()
-        # self.qa_chain = self._setup_qa_chain()
+        self.retrieved = setup_vectorstore().as_retriever(search_kwargs={
+            "k": 2,
+        })
 
         self.instructions = """
             You are Hera, a professional and efficient travel assistant for
             Hermex Travels.Your purpose is to provide accurate, concise, and
             helpful answers strictly based on the provided context. Avoid
             speculation and only provide facts relevant to Hermex services
-            and the travel/tourism industry.
+            and the travel/tourism industry. You functionality is not limited 
+            to connecting to live agents, budget planning, translator.
+            Act Human-like.
 
-            Use the following context to answer the user's question. 
+            Translator: This feature will enable real-time translation to
+            facilitate communication across different languages, enhancing
+            user interactions.
+            
+            Budget Planner: Users will be able to create and manage their
+            budgets, making it easier to plan for trips and activities based
+            on their financial preferences.
+            
+            Weather Monitor: This feature will provide up-to-date weather
+            information, allowing users to plan their activities according to
+            current and forecasted weather conditions.
+            
+            Activity Matcher: Users can receive suggestions for activities
+            tailored to their interests and preferences, ensuring a more
+            personalized experience.
+            
+            Destination Suggester: This feature will offer recommendations for
+            travel destinations based on user inputs, helping them find the
+            perfect place to visit.
+
+            Use the following context to answer the user's question.
             If the answer is not in the context, reply with:
             "I'm sorry, I can not provide such information at the moment."
 
@@ -92,14 +131,14 @@ class HermexAssistant:
         )
 
         # Define tool
-        @tool(response_format="content_and_artifact")
-        def retrieve():
+        @tool(response_format="content")
+        def retrieve(query: str):
             """
-            Retrieve information related to a query to provide and 
+            Retrieve information related to a query to provide and
             informative response.
             """
-            retrieved = self.vectorstore.as_retriever(search_kwargs={"k": 2})
-            return retrieved, self.conversational_memory.chat_memory
+            content = self.retrieved.invoke(query)
+            return content
 
         # Define tools
         @tool(response_format="content")
@@ -112,8 +151,6 @@ class HermexAssistant:
             ip = get('https://api.ipify.org').text
             return ip
 
-        # Define tools
-        @tool(response_format="content")
         def date_time():
             """
             Retrieve current day, date, and time in a readable format
@@ -122,6 +159,18 @@ class HermexAssistant:
 
             now = datetime.now()
             return now.strftime("%A, %Y-%m-%d %H:%M:%S")
+        
+        @tool(response_format="content")
+        def live_agent():
+            """
+            Helps the user to connect with a live agent
+            """
+            time = date_time()
+            location = ip_address()
+            print(
+                f"User connected to live agent at {time} from IP: {location}"
+                  )
+            return "Please wait while we connect you to a live agent."
 
         self.conversational_memory = ConversationBufferWindowMemory(
             memory_key='chat_history',
@@ -131,9 +180,8 @@ class HermexAssistant:
 
         self.agent_executor = AgentExecutor(
             agent=create_tool_calling_agent(self.llm, [retrieve,
-                                                       date_time,
-                                                       ip_address], prompt),
-            tools=[retrieve, date_time, ip_address],
+                                                       live_agent], prompt),
+            tools=[retrieve, live_agent],
             memory=self.conversational_memory,
             # verbose=True,
         )
@@ -146,7 +194,10 @@ class HermexAssistant:
         self.conversational_memory.chat_memory = self.user_sessions[user_id]
 
         self.user_sessions[user_id].add_user_message(query)
-        response = self.agent_executor.invoke({'input': query})
+        response = self.agent_executor.invoke(
+            {'input': query,
+             "chat_history": self.user_sessions[user_id].messages})
+        
         self.user_sessions[user_id].add_ai_message(response['output'])
         return response['output']
 

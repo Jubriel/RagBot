@@ -4,7 +4,10 @@ import streamlit as st
 from hermex import HermexAssistant
 
 # Initialize assistant
-assistant = HermexAssistant()
+if 'assistant' not in st.session_state:
+    st.session_state.assistant = HermexAssistant()
+
+assistant = st.session_state.assistant
 
 # Set page config
 st.set_page_config(page_title="Hermex Travel Assistant", page_icon="🧳",
@@ -34,7 +37,7 @@ if prompt := st.chat_input("Ask your question..."):
     # Get assistant reply
     with st.chat_message("assistant"):
         with st.spinner("Hera is thinking..."):
-            response = assistant.answer_question(user_id, prompt)
+            response = assistant.chat(user_id, prompt)
             st.markdown(response)
             st.session_state.messages.append({"role": "assistant",
                                               "content": response})
