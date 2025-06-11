@@ -1,4 +1,4 @@
-# main.py
+# type: ignore
 import logging
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
@@ -10,11 +10,11 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s | %(levelname)s | %(name)s | %(message)s",
 )
-logger = logging.getLogger("hermex-assistant")
+logger = logging.getLogger(__name__)
 
 # -------------------- FastAPI Setup --------------------
-app = FastAPI(title="Hermex Assistant API",
-              description= "Hermex Assistant API for real-time chat",
+app = FastAPI(title="StoryTelling API",
+              description="Storytelling Assistant API for real-time chat",
               version="0.1.0")
 
 # Enable CORS
