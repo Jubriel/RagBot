@@ -1,0 +1,25 @@
+[project]
+name = "ragbot"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "beautifulsoup4>=4.13.4",
+    "fastapi>=0.115.12",
+    "langchain>=0.3.25",
+    "langchain-community>=0.3.25",
+    "langchain-core>=0.3.65",
+    "langchain-ollama>=0.3.3",
+    "pdfminer>=20191125",
+    "pdfminer-six==20221105",
+    "pi-heif>=0.22.0",
+    "pydantic>=2.11.5",
+    "python-dotenv>=1.1.0",
+    "streamlit>=1.45.1",
+    "streamlit-chat>=0.1.1",
+    "unstructured[pdf,pof]>=0.17.2",
+    "uvicorn>=0.34.3",
+    "websocket>=0.2.1",
+    "websockets>=15.0.1",
+]

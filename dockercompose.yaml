@@ -1,0 +1,49 @@
+
+
+services:
+  ollama:
+    build:
+      context: .
+      dockerfile: Dockerfile.llm
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_models:/root/.ollama
+    networks:
+      - digitvant
+    environment:
+      - OLLAMA_MODELS=/root/.ollama/models
+      - OLLAMA_HOST=0.0.0.0:11434
+      - OLLAMA_KEEP_ALIVE=24h
+    restart: unless-stopped
+    entrypoint: ['/usr/bin/bash', 'pull_model.sh']
+    
+
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile.chat
+    ports:
+      - "8000:8000"
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+    depends_on:
+      - ollama
+    volumes:
+      # Use bind mount only for development
+      - type: bind
+        source: .
+        target: /app
+        consistency: cached
+    networks:
+      - story
+    restart: unless-stopped
+
+
+networks:
+  story:
+    driver: bridge
+
+volumes:
+  ollama_models:
+    driver: local
